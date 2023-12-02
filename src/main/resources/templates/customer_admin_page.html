@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel</title>
+
+</head>
+<body>
+<h1 style="text-align: center">Список зареєстрованих користувачів</h1>
+
+<hr>
+<div th:if="${customers}">
+    <div th:each="customer : ${customers}" th:unless="${customer.user.roles == 2}">
+        <ul>
+            <li th:text="${customer.id}">ID</li>
+            <li th:text="${customer.firstName}">Ім'я</li>
+            <li th:text="${customer.lastName}">Прізвище</li>
+            <li th:text="${customer.user.username}">Логін</li>
+            <li th:text="${customer.user.password}">Пароль</li>
+            <li th:text="${customer.email}">EMAIL</li>
+            <li th:text="${customer.phone}">Телефон</li>
+            <li th:text="${customer.address}">Адреса</li>
+            <li>
+                <form method="post" th:action="@{'/deleteUser'}">
+                    <input type="hidden" th:name="userId" th:value="${customer.id}">
+                    <button type="submit" th:text="Видалити">Видалити</button>
+                </form>
+            </li>
+        </ul>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Account</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .user-details {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-logout {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="user-details text-center">
+        <h1>User Account</h1>
+        <div th:if="${user != null}">
+            <p id="fullName" th:text="${customer.firstName + ' ' + customer.lastName}"></p>
+            <p th:text="${'Email: ' + customer.email}"></p>
+            <p th:text="${'Phone: ' + customer.phone}"></p>
+            <p th:text="${'Age: ' + customer.age}"></p>
+            <p th:text="${'Address: ' + customer.address}"></p>
+
+            <a class="btn btn-outline-danger btn-logout" href="#" onclick="confirmLogout()">Вийти</a>
+            <button class="btn btn-primary" onclick="swapNameAndLastName()">Змінити ім'я та прізвище</button>
+
+        </div>
+        <div th:unless="${user != null}">
+            <p>User is not logged in</p>
+            <a class="btn btn-primary" href="/login">Login</a>
+            <a class="btn btn-success" href="/registration">Register</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmLogout() {
+        let confirmLogout = confirm("Ви дійсно бажаєте вийти?");
+        if (confirmLogout) {
+            window.location.href = "/logout";
+        }
+    }
+
+    function swapNameAndLastName() {
+        const fullNameElement = document.getElementById("fullName");
+        const currentName = fullNameElement.textContent;
+        const [firstName, lastName] = currentName.split(' ');
+        fullNameElement.textContent = lastName + ' ' + firstName;
+    }
+
+</script>
+
+<!-- Add Bootstrap JS and Popper.js scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

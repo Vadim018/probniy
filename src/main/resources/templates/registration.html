@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Registration</h1>
+<form th:action="@{/registration}" method="post">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <div>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" required>
+    </div>
+    <div>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" class="form-control" required>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" class="form-control" required>
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" class="form-control" required>
+    </div>
+    <div>
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" class="form-control" required>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>
+</body>
+</html>
